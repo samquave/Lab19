@@ -1,13 +1,13 @@
 <button class='fancy-button' id='compose-btn'>Compose</button>
 
 <div id='post-list'>
-    <a ng-repeat="p in posts">
-        <div class='post'>
-            <h1>{{ p.title }}</h1>
-            <p>{{ p.content }}</p>
-            <h3>{{ p.categoryname }}</h3>
-            <h4>{{ p.authorfirstname }}</h4>
-            <h5>{{ p.datetime | date: 'short' }}</h5>
-        </a>
+
+    <div class='post' ng-repeat="p in posts">
+        <h1>{{ p.title }}</h1>
+        <p>{{ p.content }}</p>
+        <h3>Category: {{ p.categoryname }}</h3>
+        <h4>{{ p.authorfirstname }}{{ p.authorlastname }}</h4>
+        <h5>{{ p.createdat }}</h5>
+
     </div>
 </div>
