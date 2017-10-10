@@ -1,0 +1,6 @@
+<div class='compose-post-box'>
+    <select id='user-selector' ng-model='newUserid'>
+        <option value=''>Select User</option>
+        <option value='{{ u.id }}' ng-repeat='u in users'>{{ u.firstname }}{{ u.lastname }}</option>
+    </select>
+</div>
