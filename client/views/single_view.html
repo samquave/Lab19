@@ -1,0 +1,12 @@
+<div id="single-post-view">
+    <div class="post">
+        <h1>{{ post.title }}</h1>
+        <p>{{ post.content }}</p>
+        <h4>Category: {{ post.categoryname }}</h4>
+        <h4>{{ post.authorfirstname }} {{ post.authorlastname }}</h4>
+        <h5>{{ post.createdat | date: 'short' }}</h5>
+        <button id="delete-btn" class='fancy-button red' ng-click='deletePost()'>DELETE</button>
+        <button class="fancy-button" id="update-btn" ng-click="updatePost()">Update</button>
+
+    </div>
+</div>

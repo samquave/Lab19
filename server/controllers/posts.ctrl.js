@@ -1,7 +1,31 @@
 let express = require('express');
 let procedures = require('../procedures/posts.proc')
+var passport = require('passport');
+var auth = require('../middleware/auth.mw');
 
 let router = express.Router();
+
+router.post('/login', function (req, res, next) {
+    passport.authenticate('local', function (err, user, info) {
+        if (err) {
+            console.log(err);
+            return res.sendStatus(500);
+        }
+        if (!user) {
+            return res.status(401).send(info);
+        }
+        req.logIn(user, function (err) {
+            if (err) {
+                return res.sendStatus(500);
+            }
+            else {
+                return res.send(user);
+            }
+        });
+    })(req, res, next)
+});
+
+// router.all('*', auth.isLoggedIn);
 
 router.route('/')
     .get((req, res) => {
@@ -16,7 +40,7 @@ router.route('/')
         );
     })
     .post((req, res) => {
-        procedures.create(req.body.title, req.body.userid, req.body.categoryid, req.body.content).then(
+        procedures.create(req.body.content, req.body.userid, req.body.categoryid, req.body.title).then(
             success => {
                 res.send(success);
             },
@@ -39,7 +63,7 @@ router.route('/:id')
         );
     })
     .put((req, res) => {
-        procedures.update(req.params.id, req.body.content).then(
+        procedures.update(req.params.id, req.body.id, req.body.content, req.body.categoryid, req.body.title).then(
             success => {
                 res.send(success);
             },

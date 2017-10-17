@@ -7,6 +7,7 @@ let pool = mysql.createPool({
     password: 'blogpass',
     database: 'AngularBlog'
 });
+exports.pool = pool;
 
 exports.rows = function(procedureName, args) {
     return callProcedure(procedureName, args)

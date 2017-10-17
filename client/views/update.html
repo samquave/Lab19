@@ -1,0 +1,13 @@
+<div id='compose-post-box'>
+
+    <select id="category-selector" ng-model='post.categoryid'>
+        
+        <option value='{{ c.id }}' ng-repeat='c in category'>{{ c.name }}</option>
+    </select>
+    <input type='text' placeholder='Enter Title Here' id='title-entry' ng-model='post.title'>
+</div>
+
+<div id='post-area'>
+    <textarea id='blog-area' cols='100' rows='25' ng-model='post.content'></textarea>
+    <button class='fancy button' ng-click='updatePost()'>Update</button>
+</div>

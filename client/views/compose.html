@@ -1,6 +1,15 @@
 <div class='compose-post-box'>
     <select id='user-selector' ng-model='newUserid'>
         <option value=''>Select User</option>
-        <option value='{{ u.id }}' ng-repeat='u in users'>{{ u.firstname }}{{ u.lastname }}</option>
+        <option value='{{ u.id }}' ng-repeat='u in user'>{{ u.firstname }} {{ u.lastname }}</option>
     </select>
+    <select id="category-selector" ng-model='newCategoryId'>
+        <option value=''>Select Category</option>
+        <option value='{{ c.id }}' ng-repeat='c in category'>{{ c.name }}</option>
+    </select>
+    <input type='text' placeholder='Enter Title Here' id='title-entry' ng-model='newTitle'>
+    <div id='post-area'>
+        <textarea id='blog-area' cols='100' rows='25' ng-model='newContent'></textarea>
+        <button class='fancy button' ng-click='postPost()'>Post Blog</button>
+    </div>
 </div>
